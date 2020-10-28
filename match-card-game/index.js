@@ -18,12 +18,28 @@ const combineDecks = (num) => {
     const tempDeck = createDeck()
     bigDeck.push(...tempDeck)
   }
-  console.log(bigDeck)
   return bigDeck
 }
 
-const handleButton = () => {
-  
-  combineDecks(decksInput.value)
-  decksInput.value=''
+const shuffleDeck = (deck) => {
+  let counter = deck.length
+
+  while(counter > 0){
+    let index = Math.floor(Math.random() * counter)
+
+    counter --
+
+    let temp = deck[counter]
+    deck[counter] = deck[index]
+    deck[index] = temp
+  }
+
+  return deck
 }
+
+const handleButton = () => {
+  const myDeck = shuffleDeck(combineDecks(decksInput.value))
+  decksInput.value = ''
+  console.log(myDeck)
+}
+
