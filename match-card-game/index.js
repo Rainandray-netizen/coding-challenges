@@ -1,5 +1,6 @@
 const suits = ['Hearts','Diamonds','Spades','Clubs']
 const values =  ['Ace','2','3','4','5','6','7','8','9','10','Jack','Queen','King']
+const decksInput = document.getElementById('numOfDecks')
 
 const createDeck = () => {
   const deck = []
@@ -11,6 +12,18 @@ const createDeck = () => {
   return deck
 }
 
-const myDeck = createDeck()
+const combineDecks = (num) => {
+  const bigDeck = []
+  for(num; num--;) {
+    const tempDeck = createDeck()
+    bigDeck.push(...tempDeck)
+  }
+  console.log(bigDeck)
+  return bigDeck
+}
 
-console.log(myDeck)
+const handleButton = () => {
+  
+  combineDecks(decksInput.value)
+  decksInput.value=''
+}
